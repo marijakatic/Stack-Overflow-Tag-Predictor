@@ -1,0 +1,5 @@
+# ignore all logs
+*.log
+
+# ignore jupyter notebook temporary data
+.ipynb_checkpoints
