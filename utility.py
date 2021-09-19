@@ -24,6 +24,8 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import BinaryCrossentropy
 
 def print_metrics(y_true, y_predicted):
     keras_acc = Accuracy()
@@ -37,7 +39,8 @@ def print_metrics(y_true, y_predicted):
     print("Precision Score Micro Averaged:\t\t%.3f" % (100 * metrics.precision_score(y_true, y_predicted, average='micro')))
     print("Recall Score Micro Averaged:\t\t%.3f" % (100 * metrics.recall_score(y_true, y_predicted, average='micro')))
 
-def Sequential_compile_train(X_train, y_train, validation_data=None, epochs=15, verbose=1):
+def Sequential_compile_train(X_train, y_train, validation_data=None, epochs=15, verbose=1, 
+                             Adam_learning_rate=0.001):
     N_features = X_train.shape[1]
     N_labels = y_train.shape[1]
 
@@ -52,7 +55,8 @@ def Sequential_compile_train(X_train, y_train, validation_data=None, epochs=15, 
 
     model.summary()
 
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['binary_accuracy'])
+    # model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['binary_accuracy'])
+    model.compile(optimizer=Adam(learning_rate=Adam_learning_rate), loss=BinaryCrossentropy(), metrics=['binary_accuracy'])
 
     history = model.fit(X_train, y_train, epochs=epochs, batch_size=32, verbose=verbose, 
                         validation_data=validation_data)           
