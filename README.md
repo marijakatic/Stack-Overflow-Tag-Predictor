@@ -47,6 +47,11 @@ The dataset contains content from disparate stack exchange sites, containing a m
 * In the future, we can try with some more complex NLP word embeddings and models.
 * The Heuristic, since it turned out to be very good, will continue to be used in the future. There are relations between tags for one question, so when you have some tags, it is easier to predict more of them. So The Heuristic could be the starting point,  upgraded with some ML.
 
+<!-- MODELS -->
+## Trained models
+
+Our trained models and vectorizers are available here:
+[Google Drive Shared Folder](https://drive.google.com/drive/folders/1NcJu5kjwG2DOIZdUsXcvJ3XwYY9_lHSE?usp=sharing)
 
 <!-- REFERENCES -->
 ## References
